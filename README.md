@@ -337,3 +337,23 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+<div align="center">
+  <p>
+    <a href="https://github.com/Gitmaxd/ai-init">
+      <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Black/Github.svg" width="30" alt="GitHub"/>
+    </a>
+    &nbsp;&nbsp;
+    <a href="https://x.com/gitmad">
+      <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Black/X.svg" width="30" alt="X (Twitter)"/>
+    </a>
+  </p>
+  <p>
+    <b>Created by <a href="https://github.com/Gitmaxd">GitMaxD</a></b>
+  </p>
+  <p>
+    <small>&copy; 2025 GitMaxD. All rights reserved.</small>
+  </p>
+</div>
