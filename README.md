@@ -71,10 +71,13 @@ ai-init my-directory
 
 ### Package Version
 
-The current version is **1.6.4**. You can specify a version with npx if needed:
+The current version is **1.6.4**. You can use AI Init with either the latest or a specific version:
 
 ```bash
+# Always use the most recent version from npm
 npx ai-init@latest my-directory
+
+# Use a specific version for consistency or compatibility
 npx ai-init@1.6.4 my-directory
 ```
 
