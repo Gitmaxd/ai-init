@@ -2,6 +2,9 @@
 
 [![npm version](https://img.shields.io/npm/v/ai-init.svg)](https://www.npmjs.com/package/ai-init)
 [![License](https://img.shields.io/npm/l/ai-init.svg)](https://github.com/Gitmaxd/ai-init/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/npm/dt/ai-init.svg)](https://www.npmjs.com/package/ai-init)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Gitmaxd/ai-init)](https://github.com/Gitmaxd/ai-init)
+[![Version 1.4.0](https://img.shields.io/badge/version-1.4.0-blue)](https://www.npmjs.com/package/ai-init)
 
 A lightweight, one-time scaffolding tool for bootstrapping AI-assisted development projects with structured rules and memory management.
 
@@ -30,17 +33,36 @@ AI Init is a one-time scaffolding tool - it sets up the structure and then gets 
 
 ## 🚀 Installation & Usage
 
-### Creating a New Project
+### NPX Installation (Recommended)
+
+The easiest way to use AI Init is with npx, which comes with npm 5.2+ and higher:
 
 ```bash
+# Create a new project (will create a new directory)
 npx ai-init my-project
+
+# Add to an existing project (run in the project directory)
+npx ai-init --add
 ```
 
-### Adding to an Existing Project
+### Global Installation
+
+If you prefer, you can install AI Init globally:
 
 ```bash
-cd existing-project
-npx ai-init --add
+# Install globally
+npm install -g ai-init
+
+# Then use without npx
+ai-init my-project
+```
+
+### Package Version
+
+The current version is **1.4.0**. You can specify a version with npx if needed:
+
+```bash
+npx ai-init@1.4.0 my-project
 ```
 
 ### Command Options
@@ -291,6 +313,16 @@ For the best experience, use with:
 - [WindSurf](https://windsurf.sail.dev) - The world's first agentic IDE
 - [Cursor](https://cursor.sh) - AI-native code editor
 - GitHub Copilot compatible editors (VS Code, JetBrains IDEs)
+
+## 🔍 Troubleshooting
+
+If you encounter issues during installation or setup:
+
+1. **Symlink Creation**: Some environments may require administrative privileges to create symlinks. Try running with elevated permissions if symlinks aren't created.
+
+2. **Dependency Installation**: Use the `--verbose` flag to see detailed logs for debugging dependency installation issues.
+
+3. **Template Availability**: If you receive a message about a template not being found, the system will automatically fall back to the Next.js template.
 
 ## 👥 Contributing
 
