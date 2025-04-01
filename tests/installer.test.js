@@ -1,7 +1,6 @@
 const { expect } = require('@jest/globals');
-const path = require('path');
 const fs = require('fs-extra');
-const { createProject, addToProject } = require('../lib/installer');
+const { createProject } = require('../lib/installer');
 
 // Mock fs-extra and child_process
 jest.mock('fs-extra');
