@@ -1,7 +1,7 @@
 {
   "name": "ai-init",
   "version": "1.6.0",
-  "description": "AI Project Starter - Framework for AI-assisted development workflows",
+  "description": "Zero-dependency Next.js scaffolding tool for AI-assisted development",
   "main": "lib/index.js",
   "bin": {
     "ai-init": "bin/cli.js"
@@ -11,16 +11,12 @@
     "lib/"
   ],
   "scripts": {
-    "test": "jest",
-    "lint": "eslint .",
-    "prepublishOnly": "npm run lint && npm test",
-    "local-test": "./scripts/local-test.sh",
-    "dev": "nodemon --watch lib --watch bin bin/cli.js",
-    "prepare-release": "npm version patch && npm run lint && npm test"
+    "prepublishOnly": "node scripts/verify-files.js"
   },
   "keywords": [
     "ai",
     "scaffolding",
+    "nextjs",
     "project",
     "starter",
     "template",
@@ -31,20 +27,11 @@
   ],
   "author": "GitMaxD",
   "license": "MIT",
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "commander": "^9.4.1",
-    "fs-extra": "^11.1.0",
-    "inquirer": "^8.2.5",
-    "ora": "^5.4.1",
-    "validate-npm-package-name": "^4.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.36.0",
-    "jest": "^29.5.0",
-    "nodemon": "^2.0.22"
-  },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gitmaxd/ai-init.git"
   }
 }
