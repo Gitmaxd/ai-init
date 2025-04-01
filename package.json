@@ -1,6 +1,6 @@
 {
   "name": "ai-init",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "AI Project Starter - Framework for AI-assisted development workflows",
   "main": "lib/index.js",
   "bin": {
