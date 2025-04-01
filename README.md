@@ -344,11 +344,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <div align="center">
   <p>
     <a href="https://github.com/Gitmaxd/ai-init">
-      <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Black/Github.svg" width="30" alt="GitHub"/>
+      <img src="https://github.com/simple-icons/simple-icons/raw/develop/icons/github.svg" width="30" alt="GitHub"/>
     </a>
     &nbsp;&nbsp;
-    <a href="https://x.com/gitmad">
-      <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Black/X.svg" width="30" alt="X (Twitter)"/>
+    <a href="https://x.com/GitMaxd">
+      <img src="https://github.com/simple-icons/simple-icons/raw/develop/icons/x.svg" width="30" alt="X (Twitter)"/>
     </a>
   </p>
   <p>
