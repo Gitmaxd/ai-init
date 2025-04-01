@@ -312,6 +312,7 @@ For the best experience, use with:
 
 - [WindSurf](https://windsurf.sail.dev) - The world's first agentic IDE
 - [Cursor](https://cursor.sh) - AI-native code editor
+- [Cline](https://cline.dev) - AI-powered command-line interface
 - GitHub Copilot compatible editors (VS Code, JetBrains IDEs)
 
 ## 🔍 Troubleshooting
