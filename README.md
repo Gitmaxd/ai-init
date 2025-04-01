@@ -48,7 +48,7 @@ npx ai-init my-project [options]
 ```
 
 Options:
-- `--type <type>` - Project type (next, react, node, default)
+- `--type <type>` - Project type (`default`, `next`, `react`, `node`)
 - `--skip-git` - Skip git initialization
 - `--skip-install` - Skip dependency installation
 - `--verbose` - Show detailed logs
