@@ -11,7 +11,8 @@
     "lib/"
   ],
   "scripts": {
-    "prepublishOnly": "node scripts/verify-files.js"
+    "prepublishOnly": "node scripts/verify-files.js",
+    "test": "bash scripts/local-test.sh"
   },
   "keywords": [
     "ai",
