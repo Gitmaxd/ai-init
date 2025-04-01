@@ -2,9 +2,8 @@
 
 [![npm version](https://img.shields.io/npm/v/ai-init.svg)](https://www.npmjs.com/package/ai-init)
 [![License](https://img.shields.io/npm/l/ai-init.svg)](https://github.com/Gitmaxd/ai-init/blob/main/LICENSE)
-[![Downloads](https://img.shields.io/npm/dt/ai-init.svg)](https://www.npmjs.com/package/ai-init)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Gitmaxd/ai-init)](https://github.com/Gitmaxd/ai-init)
-[![Version 1.6.0](https://img.shields.io/badge/version-1.6.0-blue)](https://www.npmjs.com/package/ai-init)
+[![Version 1.6.4](https://img.shields.io/badge/version-1.6.4-blue)](https://www.npmjs.com/package/ai-init)
 
 A **zero-dependency** lightweight scaffolding tool for adding AI-assisted development structure to Next.js projects.
 
@@ -13,6 +12,18 @@ A **zero-dependency** lightweight scaffolding tool for adding AI-assisted develo
 AI Init helps you quickly set up the foundation for AI-assisted development by creating a standardized structure of files and directories. This structure helps AI tools like GitHub Copilot, Cursor, and WindSurf better understand your project context and maintain knowledge across sessions.
 
 Designed specifically for Next.js projects, AI Init creates the necessary directory structure and files that enable AI assistants to better understand and help with your development.
+
+## 💭 Why I Created AI Init
+
+As a developer working primarily with Next.js and Python, I found myself spending too much valuable time on repetitive scaffolding tasks when using AI-powered IDEs like Cursor, Windsurf, and Cline. Each new project required the same manual setup to properly direct the AI and help it understand my codebase.
+
+I created AI Init because I believe our time is better spent solving real problems, not configuring environments. The tool allows you to immediately take advantage of AI using standardized rules and persistent memories across sessions, without wasting hours on setup and troubleshooting.
+
+What makes AI Init special is its unopinionated approach. Since I regularly use all three major AI-powered IDEs and recognize that each has its place in a developer's toolbox, I designed this template to work seamlessly with any of them.
+
+By using the `--add` flag, you can quickly outfit existing projects with AI-friendly structure, or create new directories that follow current best practices. My roadmap includes extending this to other platforms, with Python support currently in development.
+
+I sincerely believe this tool will help others, and I'm sharing it because I believe a rising tide floats all boats. Let's all spend less time configuring and more time building amazing things.
 
 ## 🔄 How It Works
 
@@ -60,10 +71,10 @@ ai-init my-directory
 
 ### Package Version
 
-The current version is **1.6.0**. You can specify a version with npx if needed:
+The current version is **1.6.4**. You can specify a version with npx if needed:
 
 ```bash
-npx ai-init@1.6.0 my-directory
+npx ai-init@1.6.4 my-directory
 ```
 
 ### Command Options
@@ -352,9 +363,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
     </a>
   </p>
   <p>
-    <b>Created by <a href="https://github.com/Gitmaxd">GitMaxD</a></b>
+    <b>Created by <a href="https://github.com/Gitmaxd">GitMaxd</a></b>
   </p>
   <p>
-    <small>&copy; 2025 GitMaxD. All rights reserved.</small>
+    <small>&copy; {{ site.time | date: '%Y' }} GitMaxd. Open Source (Free like beer) and Experimental (not medicinal).</small>
   </p>
 </div>
