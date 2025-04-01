@@ -1,0 +1,50 @@
+{
+  "name": "ai-init",
+  "version": "1.0.0",
+  "description": "AI Project Starter - Framework for AI-assisted development workflows",
+  "main": "lib/index.js",
+  "bin": {
+    "ai-init": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run lint && npm test",
+    "local-test": "./scripts/local-test.sh",
+    "dev": "nodemon --watch lib --watch bin bin/cli.js",
+    "prepare-release": "npm version patch && npm run lint && npm test"
+  },
+  "keywords": [
+    "ai",
+    "scaffolding",
+    "project",
+    "starter",
+    "template",
+    "rules",
+    "memory",
+    "llm",
+    "conventions"
+  ],
+  "author": "GitMaxD",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^9.4.1",
+    "fs-extra": "^11.1.0",
+    "inquirer": "^8.2.5",
+    "ora": "^5.4.1",
+    "validate-npm-package-name": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

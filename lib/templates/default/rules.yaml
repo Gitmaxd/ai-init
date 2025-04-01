@@ -1,0 +1,450 @@
+# This file defines project standards, conventions, and rules for AI assistants
+# It should be placed at the root of your project as .windsurfrules
+
+metadata:
+  version: "1.0.0"
+  created_at: "2025-03-30"
+  updated_at: "2025-03-30"
+  template_type: "project_rules"
+  intended_use: "AI IDE project configuration"
+
+# Schema information to help LLMs understand the structure
+schema:
+  version: "1.0"
+  sections:
+    - project
+    - documentation
+    - conventions
+    - testing
+    - security
+    - architecture
+    - workflow
+    - maintenance
+    - commit_format
+    - rules
+    - llm_instructions
+    - examples
+    - template_completion
+
+description: AI Project Configuration and Enforcement Rules
+
+# Project information - replace placeholders with actual values
+project:
+  name: "{{PROJECT_NAME}}"
+  type: "{{PROJECT_TYPE}}"
+  goal: "{{PROJECT_GOAL}}"
+  technologies:
+    - "{{PRIMARY_TECHNOLOGY_1}}"
+    - "{{PRIMARY_TECHNOLOGY_2}}"
+    - "{{PRIMARY_TECHNOLOGY_3}}"
+  features:
+    - "{{FEATURE_1}}"
+    - "{{FEATURE_2}}"
+    - "{{FEATURE_3}}"
+
+# Documentation structure and requirements
+documentation:
+  locations:
+    - path: doc-files/
+      purpose: General project documentation
+    - path: memory-bank/
+      purpose: Structured project knowledge
+  memory_bank_required_files:
+    - projectbrief.md  # High-level project goals and requirements
+    - techContext.md   # Technical stack and architectural decisions
+    - systemPatterns.md # Common patterns and conventions
+    - activeContext.md # Current work in progress
+    - progress.md      # Project status and milestone tracking
+
+# Code style and conventions
+conventions:
+  general:
+    - Clear, descriptive variable and function names
+    - Comment complex logic
+    - Single responsibility functions
+    - Limit line length to 80 characters
+  javascript_typescript:
+    naming:
+      variables: 
+        pattern: "^[a-z][a-zA-Z0-9]*$"
+        style: camelCase
+        examples: ["userId", "apiResponse"]
+      classes: 
+        pattern: "^[A-Z][a-zA-Z0-9]*$"
+        style: PascalCase
+        examples: ["UserProfile", "ApiClient"]
+      files:
+        component: 
+          pattern: "^[A-Z][a-zA-Z0-9]*\.(tsx|jsx)$"
+          style: PascalCase
+          examples: ["Button.tsx", "UserProfile.tsx"]
+        utility:
+          pattern: "^[a-z][a-z0-9-]*\.(ts|js)$"
+          style: kebab-case
+          examples: ["api-helpers.ts", "date-utils.ts"]
+        page:
+          pattern: "^([a-z][a-z0-9-]*|\\[\\w+\\]|layout|page|loading|error)\\.tsx$"
+          style: "kebab-case for routes, snake_case for dynamic segments, lowercase for special files"
+          examples: ["about-us.tsx", "[product_id].tsx", "page.tsx"]
+    practices:
+      - Prefer const over let
+      - Avoid var
+      - Use async/await instead of promise chains
+  css_scss:
+    naming: 
+      style: BEM
+      examples: [".block__element--modifier", ".card__title--highlighted"]
+    sort_properties: true
+    use_variables:
+      - colors
+      - spacing
+
+# Testing requirements
+testing:
+  required:
+    - Unit tests for utilities and services
+    - Component tests for UI elements
+    - Integration tests for critical user flows
+  location: Colocated with code, .test.js suffix
+  coverage:
+    minimum: "{{MINIMUM_TEST_COVERAGE}}"
+
+# Security guidelines
+security:
+  restricted_files:
+    - .env
+    - .env.*
+    - credentials.json
+    - "{{ADDITIONAL_SENSITIVE_FILES}}"
+  practices:
+    - Never hardcode API keys or credentials
+    - Use environment variables for sensitive configuration
+    - Sanitize user inputs to prevent injection attacks
+    - Follow OWASP security guidelines for web applications
+
+# Architecture information
+architecture:
+  pattern: "{{ARCHITECTURAL_PATTERN}}"  # e.g., MVC, MVVM
+  state_management: "{{STATE_MANAGEMENT_APPROACH}}"
+  api_communication: "{{API_COMMUNICATION_STRATEGY}}"
+  adr_references:
+    - doc-files/adr/001-initial-stack.md
+    - doc-files/adr/002-add-langgraph.md
+
+# Development workflow
+workflow:
+  process:
+    - Create branch per feature/fix
+    - Write tests before implementation when possible
+    - Run linters and tests before committing
+    - Follow conventional commits format
+
+# Maintenance procedures
+maintenance:
+  update_files:
+    - activeContext.md  # Update with current state
+    - progress.md       # Update with completed items
+    - systemPatterns.md # Update if new patterns emerge
+    - techContext.md    # Update if new technologies are introduced
+    - projectbrief.md   # Update if project goals change
+
+# Git commit message format
+commit_format:
+  pattern: "<type>[optional scope]: <description>\n\n[optional body]\n\n[optional footer]"
+  types:
+    - feat     # New feature
+    - fix      # Bug fix
+    - docs     # Documentation changes
+    - style    # Formatting changes
+    - refactor # Code change that neither fixes a bug nor adds a feature
+    - perf     # Performance improvements
+    - test     # Adding or correcting tests
+    - build    # Changes to build process
+    - ci       # Changes to CI configuration
+    - chore    # Maintenance tasks
+    - revert   # Revert previous commit
+  guidelines:
+    subject: "Imperative, lowercase, no period, ≤50 chars"
+    body: "Explain WHY, not HOW, wrap at 72 chars"
+    footer: "Use Fixes #123 or BREAKING CHANGE: description"
+  examples:
+    - "feat(auth): implement SSO functionality"
+    - "fix(api): prevent timeout on large requests\n\nIncreased request timeout and implemented streaming response.\nFixes #422"
+
+# Rules for enforcing project standards
+rules:
+  - name: architecture_alignment
+    description: Ensure new features follow past ADRs
+    filters:
+      - type: file_extension
+        pattern: "\\.(ts|tsx|js|py)$"
+    actions:
+      - type: suggest
+        message: "Check ADRs in doc-files/adr/ for guidance on architectural decisions."
+        
+  - id: "rule-001"
+    name: "memory_bank_enforcement"
+    description: "Memory bank files must exist and follow naming/location conventions"
+    severity: "error"
+    applies_to: "memory-bank/"
+    validation:
+      required_files:
+        - projectbrief.md
+        - techContext.md
+        - systemPatterns.md
+        - activeContext.md
+        - progress.md
+
+  - id: "rule-002"
+    name: "ai_aware_scaffold"
+    description: "Offer to scaffold missing memory bank files at project start"
+    severity: "suggestion"
+    trigger: "project_init"
+    action: "suggest"
+    message: |
+      Want to scaffold your memory-bank directory?
+      I'll create:
+      - projectbrief.md
+      - techContext.md
+      - systemPatterns.md
+      - activeContext.md
+      - progress.md
+
+  - id: "rule-003"
+    name: "cursor_rules_location"
+    description: "Standards for placing Cursor rule files in the correct directory"
+    severity: "error"
+    filters:
+      - type: "file_extension"
+        pattern: "\.mdc$"
+      - type: "content"
+        pattern: "(?s)<rule>.*?</rule>"
+      - type: "event"
+        pattern: "file_create"
+    actions:
+      - type: "reject"
+        conditions:
+          - pattern: "^(?!\.\/\.cursor\/rules\/.*\.mdc$)"
+            message: "Cursor rule files (.mdc) must be placed in the .cursor/rules directory"
+      - type: "suggest"
+        message: |
+          When creating Cursor rules:
+
+          1. File location:
+             - Place all rule files in PROJECT_ROOT/.cursor/rules/
+             - Example: .cursor/rules/your-rule-name.mdc
+
+          2. Naming convention:
+             - Use kebab-case filenames with .mdc extension
+             - Names should describe the rule's purpose
+
+          3. Never place rule files:
+             - In the project root
+             - In any location outside .cursor/rules/
+    examples:
+      input: |
+        # Bad: Rule file in wrong location
+        rules/my-rule.mdc
+        my-rule.mdc
+        .rules/my-rule.mdc
+
+        # Good: Rule file in correct location
+        .cursor/rules/my-rule.mdc
+      output: "Correctly placed Cursor rule file"
+    metadata:
+      priority: "high"
+      version: "1.0"
+
+  - id: "rule-004"
+    name: "rule_file_format"
+    description: "Format and structure for creating Cursor rule files"
+    severity: "warning"
+    filters:
+      - type: "file_extension"
+        pattern: "\.mdc$"
+      - type: "path"
+        pattern: "^\.cursor\/rules\/"
+    actions:
+      - type: "suggest"
+        message: |
+          When creating rule files (.mdc):
+          
+          1. Format requirements:
+             - Use YAML format with .mdc extension
+             - Include <rule> and </rule> tags around YAML content
+          
+          2. Structure requirements:
+             - Provide a unique id and name
+             - Include clear description of the rule's purpose
+             - Define when and how the rule applies
+             - Specify the action to take when triggered
+          
+          3. Testing your rules:
+             - Rules are evaluated when files are modified
+             - Test by creating files that should trigger the rule
+    examples:
+      input: |
+        <rule>
+        id: enforce-imports-order
+        name: Enforce imports order
+        description: Ensure imports are ordered alphabetically
+        language: typescript,javascript
+        severity: warning
+        matches: |-
+          // Identify import statements
+          import\s+.*\s+from\s+['"].*['"]
+        message: Imports should be ordered alphabetically
+        excludedPaths:
+          - node_modules
+          - dist
+        </rule>
+      output: "Valid rule file format with YAML inside rule tags"
+    metadata:
+      priority: "medium"
+      version: "1.0"
+
+  - id: "rule-005"
+    name: "memory_creation_format"
+    description: "Format and structure for creating AI assistant memories"
+    severity: "suggestion"
+    actions:
+      - type: "suggest"
+        message: |
+          When creating memory files for AI assistants:
+          
+          1. Format requirements:
+             - Use YAML frontmatter in a .md file
+             - The file defines persistent knowledge for AI assistants
+          
+          2. Structure requirements:
+             - Include a unique id (UUID or descriptive)
+             - Provide a clear title for the memory
+             - Add detailed content in the body section
+             - Tag with relevant categories for retrieval
+             - Set appropriate visibility scope
+          
+          3. Memory storage:
+             - Memories are stored in project cache and indexed
+             - Available to AI assistants across sessions
+             - Create for important project knowledge that should persist
+    examples:
+      input: |
+        ---
+        id: "coding-standards-memory"
+        title: "Project Coding Standards"
+        tags:
+          - standards
+          - style
+          - conventions
+        visibility: "project"
+        body: |
+          # Coding Standards
+          
+          ## JavaScript/TypeScript
+          - Use camelCase for variables and functions
+          - Use PascalCase for classes and components
+          - Prefer arrow functions for callbacks
+          - Use async/await over Promise chains
+          
+          ## CSS/SCSS
+          - Follow BEM naming convention
+          - Use variables for colors and spacing
+          - Sort properties alphabetically
+          
+          ## Testing
+          - Write unit tests for all utility functions
+          - Aim for 80% test coverage minimum
+        created_at: "2025-03-30T11:46:55-07:00"
+        updated_at: "2025-03-30T11:46:55-07:00"
+        ---
+      output: "Valid memory file in YAML format with descriptive content in a .md file"
+    metadata:
+      priority: "medium"
+      version: "1.0"
+
+  - id: "rule-006"
+    name: "system_validation"
+    description: "Automatic validation of project structure and rule compliance"
+    severity: "warning"
+    filters:
+      - type: "event"
+        pattern: "file_change"
+    actions:
+      - type: "suggest"
+        message: |
+          Running project validation:
+          
+          1. Directory Structure:
+             - .cursor/rules/ directory exists
+             - doc-files/adr/ directory exists
+             - memory-bank/ directory exists
+          
+          2. Required Files:
+             - rules.yaml in project root
+             - Required memory-bank files exist (projectbrief.md, techContext.md, etc.)
+             - ADR template exists
+          
+          3. File Format Validation:
+             - Rule files use .mdc extension and <rule> tags
+             - Memory files use .md extension with proper frontmatter
+             - ADR files follow template structure
+          
+          4. Content Validation:
+             - rules.yaml has no remaining placeholder values
+             - memory-bank files contain substantive content
+             - All rules have proper ID, name, and description
+          
+          Issues requiring attention:
+          - [List any validation failures here]
+          
+          Run full validation with: ./mem-scripts/validate.sh (create this script to perform deeper validation)
+    examples:
+      input: "Project with missing required files or incorrect formats"
+      output: "Validation report with specific issues highlighted for correction"
+    metadata:
+      priority: "high"
+      version: "1.0"
+
+# Instructions for LLMs on how to interpret and apply these rules
+llm_instructions:
+  - "Use these rules to guide code generation and recommendations"
+  - "Enforce naming conventions defined in this file"
+  - "Suggest corrections when code doesn't follow these standards"
+  - "Reference specific rule IDs when providing feedback"
+  - "Maintain the Memory Bank pattern for project knowledge"
+  - "Follow the commit message format for all commits"
+  - "Respect security guidelines when handling sensitive information"
+  - "Adhere to the project structure when creating new files"
+  - "Create rules and memories as YAML files with .mdc extension"
+  - "Follow the structure and format guidelines for rules and memories"
+
+# Examples to help LLMs understand how to apply the rules
+examples:
+  - rule: "commit_format"
+    valid:
+      - "feat(auth): implement SSO functionality"
+      - "fix(api): prevent timeout on large requests"
+    invalid:
+      - "Added new feature"
+      - "Fixed bug in API"
+  
+  - rule: "javascript_typescript.naming"
+    valid:
+      - "const userId = response.id;"
+      - "class UserProfile extends Component {}"
+    invalid:
+      - "const UserID = response.id;"
+      - "class userProfile extends Component {}"
+
+# Guide for completing the template
+template_completion:
+  required_fields:
+    - project.name
+    - project.type
+    - project.goal
+    - project.technologies
+  optional_fields:
+    - architecture.pattern
+    - architecture.state_management
+    - testing.coverage.minimum
+  instructions: "Replace all placeholder values with your project-specific information"

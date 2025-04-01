@@ -1,0 +1,234 @@
+# This file defines project standards, conventions, and rules for AI assistants
+# It should be placed at the root of your project as .windsurfrules
+
+metadata:
+  version: "1.0.0"
+  created_at: "2025-03-31"
+  updated_at: "2025-03-31"
+  template_type: "project_rules"
+  intended_use: "AI IDE project configuration"
+
+# Schema information to help LLMs understand the structure
+schema:
+  version: "1.0"
+  sections:
+    - project
+    - documentation
+    - conventions
+    - testing
+    - security
+    - architecture
+    - workflow
+    - maintenance
+    - commit_format
+    - rules
+    - llm_instructions
+    - examples
+    - template_completion
+
+description: Next.js Project Configuration and Enforcement Rules
+
+# Project information - replace placeholders with actual values
+project:
+  name: "{{PROJECT_NAME}}"
+  type: "Next.js application"
+  goal: "{{PROJECT_GOAL}}"
+  technologies:
+    - "Next.js"
+    - "React"
+    - "TypeScript"
+    - "{{ADDITIONAL_TECHNOLOGY_1}}"
+    - "{{ADDITIONAL_TECHNOLOGY_2}}"
+  features:
+    - "{{FEATURE_1}}"
+    - "{{FEATURE_2}}"
+    - "{{FEATURE_3}}"
+
+# Documentation structure and requirements
+documentation:
+  locations:
+    - path: doc-files/
+      purpose: General project documentation
+    - path: memory-bank/
+      purpose: Structured project knowledge
+  memory_bank_required_files:
+    - projectbrief.md  # High-level project goals and requirements
+    - techContext.md   # Technical stack and architectural decisions
+    - systemPatterns.md # Common patterns and conventions
+    - activeContext.md # Current work in progress
+    - progress.md      # Project status and milestone tracking
+
+# Code style and conventions
+conventions:
+  general:
+    - Clear, descriptive variable and function names
+    - Comment complex logic
+    - Single responsibility functions
+    - Limit line length to 80 characters
+  javascript_typescript:
+    naming:
+      variables: 
+        pattern: "^[a-z][a-zA-Z0-9]*$"
+        style: camelCase
+        examples: ["userId", "apiResponse"]
+      classes: 
+        pattern: "^[A-Z][a-zA-Z0-9]*$"
+        style: PascalCase
+        examples: ["UserProfile", "ApiClient"]
+      files:
+        component: 
+          pattern: "^[A-Z][a-zA-Z0-9]*\.(tsx|jsx)$"
+          style: PascalCase
+          examples: ["Button.tsx", "UserProfile.tsx"]
+        utility:
+          pattern: "^[a-z][a-z0-9-]*\.(ts|js)$"
+          style: kebab-case
+          examples: ["api-helpers.ts", "date-utils.ts"]
+        page:
+          pattern: "^([a-z][a-z0-9-]*|\\[\\w+\\]|layout|page|loading|error)\\.tsx$"
+          style: "kebab-case for routes, snake_case for dynamic segments, lowercase for special files"
+          examples: ["about-us.tsx", "[product_id].tsx", "page.tsx"]
+    practices:
+      - Prefer const over let
+      - Avoid var
+      - Use async/await instead of promise chains
+      - Use server components by default, client components when necessary
+      - Prefer server actions for data mutations
+  css_scss:
+    naming: 
+      style: BEM
+      examples: [".block__element--modifier", ".card__title--highlighted"]
+    sort_properties: true
+    use_variables:
+      - colors
+      - spacing
+
+# Testing requirements
+testing:
+  required:
+    - Unit tests for utilities and services
+    - Component tests for UI elements
+    - Integration tests for critical user flows
+  location: Colocated with code, .test.ts suffix
+  tools:
+    - Jest
+    - React Testing Library
+    - Playwright for E2E tests
+  coverage:
+    minimum: "{{MINIMUM_TEST_COVERAGE}}"
+
+# Security guidelines
+security:
+  restricted_files:
+    - .env
+    - .env.*
+    - credentials.json
+    - "{{ADDITIONAL_SENSITIVE_FILES}}"
+  practices:
+    - Never hardcode API keys or credentials
+    - Use environment variables for sensitive configuration
+    - Sanitize user inputs to prevent injection attacks
+    - Follow OWASP security guidelines for web applications
+    - Use Next.js middleware for authentication and authorization
+
+# Architecture information
+architecture:
+  pattern: "App Router with Server Components"
+  state_management: "Server Components + React Context for client state"
+  api_communication: "Server Actions + Route Handlers"
+  routing:
+    - Use App Router's convention-based routing
+    - Group related routes with route groups
+    - Use layout components for shared UI
+  directory_structure:
+    - app/              # Next.js App Router pages
+    - components/       # Shared UI components
+    - lib/              # Core utilities and services
+    - public/           # Static assets
+
+# Development workflow
+workflow:
+  process:
+    - Create branch per feature/fix
+    - Write tests before implementation when possible
+    - Run linters and tests before committing
+    - Follow conventional commits format
+
+# Maintenance procedures
+maintenance:
+  update_files:
+    - activeContext.md  # Update with current state
+    - progress.md       # Update with completed items
+    - systemPatterns.md # Update if new patterns emerge
+    - techContext.md    # Update if new technologies are introduced
+    - projectbrief.md   # Update if project goals change
+
+# Git commit message format
+commit_format:
+  pattern: "<type>[optional scope]: <description>\n\n[optional body]\n\n[optional footer]"
+  types:
+    - feat     # New feature
+    - fix      # Bug fix
+    - docs     # Documentation changes
+    - style    # Formatting changes
+    - refactor # Code change that neither fixes a bug nor adds a feature
+    - perf     # Performance improvements
+    - test     # Adding or correcting tests
+    - build    # Changes to build process
+    - ci       # Changes to CI configuration
+    - chore    # Maintenance tasks
+    - revert   # Revert previous commit
+  guidelines:
+    subject: "Imperative, lowercase, no period, ≤50 chars"
+    body: "Explain WHY, not HOW, wrap at 72 chars"
+    footer: "Use Fixes #123 or BREAKING CHANGE: description"
+  examples:
+    - "feat(auth): implement SSO functionality"
+    - "fix(api): prevent timeout on large requests\n\nIncreased request timeout and implemented streaming response.\nFixes #422"
+
+# Rules for enforcing project standards
+rules:
+  - name: architecture_alignment
+    description: Ensure new features follow Next.js App Router conventions
+    filters:
+      - type: file_extension
+        pattern: "\\.(ts|tsx|js|jsx)$"
+    actions:
+      - type: suggest
+        message: "Check ADRs in doc-files/adr/ for guidance on architectural decisions. Follow Next.js App Router conventions for routing and data fetching."
+        
+  - id: "rule-001"
+    name: "memory_bank_enforcement"
+    description: "Memory bank files must exist and follow naming/location conventions"
+    severity: "error"
+    applies_to: "memory-bank/"
+    validation:
+      required_files:
+        - projectbrief.md
+        - techContext.md
+        - systemPatterns.md
+        - activeContext.md
+        - progress.md
+
+  - id: "rule-002"
+    name: "nextjs_best_practices"
+    description: "Enforce Next.js best practices"
+    severity: "warning"
+    applies_to: "app/"
+    validation:
+      file_patterns:
+        - pattern: "^page\\.tsx$"
+          message: "Page components should be the default export in page.tsx files"
+        - pattern: "^layout\\.tsx$"
+          message: "Layout components should be the default export in layout.tsx files"
+        - pattern: "^loading\\.tsx$" 
+          message: "Loading components should be the default export in loading.tsx files"
+
+# Instructions for LLMs on how to interpret and apply these rules
+llm_instructions:
+  - "Use these rules to guide code generation and recommendations for a Next.js project"
+  - "Enforce naming conventions defined in this file"
+  - "Suggest corrections when code doesn't follow these standards"
+  - "Default to server components unless client interactivity is needed"
+  - "Prefer Server Actions for data mutations over client-side API calls"
+  - "Follow the App Router directory structure conventions"

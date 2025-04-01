@@ -1,0 +1,42 @@
+# Development files
+tests/
+scripts/
+.eslintrc.js
+.eslintignore
+jest.config.js
+.github/
+.vscode/
+.idea/
+*.test.js
+coverage/
+
+# Source control
+.git/
+.gitignore
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Editor specific files
+*.sublime-*
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Documentation files not needed in the package
+CONTRIBUTING.md
+CHANGELOG.md
+docs/
+examples/

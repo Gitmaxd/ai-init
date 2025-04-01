@@ -1,0 +1,38 @@
+<rule>
+name: ui_component_patterns
+description: Enforce consistent folder structure and naming for UI components
+filters:
+  - type: path
+    pattern: "^src/components/.*\.(tsx|jsx)$"
+actions:
+  - type: suggest
+    message: |
+      UI component files should:
+      - Be placed inside src/components/ directory
+      - Use PascalCase for both the component name and the filename
+      - Export the component as default or named export matching the file name
+      - Follow single-responsibility principle
+      
+      Example component structure:
+      ```
+      src/components/
+      ├── Button.tsx         # Basic UI component
+      ├── UserProfile/       # Complex component with subcomponents
+      │   ├── index.tsx      # Main component export
+      │   ├── ProfileImage.tsx
+      │   └── UserDetails.tsx
+      └── Layout/
+          ├── index.tsx
+          └── Header.tsx
+      ```
+examples:
+  - input: "src/components/Button.tsx"
+    output: "Valid: PascalCase for component file"
+  - input: "src/components/user-profile.tsx"
+    output: "Invalid: Should use PascalCase (UserProfile.tsx)"
+  - input: "components/UserProfile.tsx"
+    output: "Valid: Correctly uses PascalCase"
+metadata:
+  priority: medium
+  version: 1.1
+</rule>
