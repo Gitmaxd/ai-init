@@ -40,82 +40,90 @@ const { createProject, addToProject } = require('../lib/installer');
 
 program
   .name('ai-init')
-  .description('Initialize AI Project Starter framework')
-  .version('1.0.0');
+  .description('Initialize AI Project Starter scaffolding')
+  .version('1.5.0');
 
 program
-  .argument('[project-name]', 'Name of the project to create')
-  .option('--add', 'Add AI Project Starter to existing project')
-  .option('--type <type>', 'Project type (next, react, node, etc.)')
-  .option('--skip-git', 'Skip git initialization')
-  .option('--skip-install', 'Skip dependency installation')
-  .option('--template <template>', 'Use specific template variant')
+  .argument('[project-name]', 'Name of the directory to create')
+  .option('--add', 'Add AI Project Starter scaffolding to existing project')
   .option('--verbose', 'Show detailed logs')
+  .option('--skip-symlink', 'Skip creating symlinks')
   .action(async (projectName, options) => {
     try {
+      if (options.verbose) {
+        process.env.VERBOSE = 'true';
+      }
+
       if (options.add) {
         // Add to existing project mode
-        const spinner = ora('Adding AI Project Starter to existing project').start();
+        const spinner = ora('Adding AI Project Starter scaffolding to existing project').start();
         await addToProject(options);
-        spinner.succeed('AI Project Starter added successfully!');
+        spinner.succeed('AI Project Starter scaffolding added successfully!');
+        
+        console.log(chalk.cyan('\n✨ Installation complete!'));
+        console.log(chalk.cyan('📖 Next steps:'));
+        console.log(chalk.cyan('  1. Set up symlinks (automatically created for you)'));
+        console.log(chalk.cyan('  2. Use AI prompts to populate rules.yaml (see README.md)'));
+        console.log(chalk.cyan('  3. Use AI prompts to initialize your memory bank files (see README.md)'));
       } else if (projectName) {
-        // Create new project mode
-        const spinner = ora(`Creating new project: ${projectName}`).start();
+        // Create new directory with scaffolding
+        const spinner = ora(`Creating scaffolding in new directory: ${projectName}`).start();
         await createProject(projectName, options);
-        spinner.succeed(`Project ${projectName} created successfully!`);
+        spinner.succeed(`Directory ${projectName} created successfully with AI Project Starter scaffolding!`);
+        
+        console.log(chalk.cyan('\n✨ Installation complete!'));
+        console.log(chalk.cyan('📖 Next steps:'));
+        console.log(chalk.cyan('  1. Set up symlinks (automatically created for you)'));
+        console.log(chalk.cyan('  2. Use AI prompts to populate rules.yaml (see README.md)'));
+        console.log(chalk.cyan('  3. Use AI prompts to initialize your memory bank files (see README.md)'));
       } else {
         // Interactive mode with prompts
         const answers = await inquirer.prompt([
           {
             type: 'input',
             name: 'projectName',
-            message: 'What is the name of your project?',
-            validate: (input) => input ? true : 'Project name is required'
-          },
-          {
-            type: 'list',
-            name: 'projectType',
-            message: 'What type of project are you creating?',
-            choices: ['next', 'react', 'node', 'other'],
-            default: 'next'
-          },
-          {
-            type: 'confirm',
-            name: 'initGit',
-            message: 'Initialize git repository?',
-            default: true
-          },
-          {
-            type: 'confirm',
-            name: 'installDeps',
-            message: 'Install dependencies?',
-            default: true
+            message: 'Name of directory to create (leave empty to add to current directory):',
+            validate: (input) => true
           }
         ]);
         
-        const spinner = ora(`Creating new project: ${answers.projectName}`).start();
-        await createProject(answers.projectName, { 
-          type: answers.projectType, 
-          skipGit: !answers.initGit, 
-          skipInstall: !answers.installDeps,
-          ...options 
-        });
-        spinner.succeed(`Project ${answers.projectName} created successfully!`);
+        if (answers.projectName) {
+          // Create new directory with scaffolding
+          const spinner = ora(`Creating scaffolding in new directory: ${answers.projectName}`).start();
+          await createProject(answers.projectName, options);
+          spinner.succeed(`Directory ${answers.projectName} created successfully with AI Project Starter scaffolding!`);
+          
+          console.log(chalk.cyan('\n✨ Installation complete!'));
+          console.log(chalk.cyan('📖 Next steps:'));
+          console.log(chalk.cyan('  1. Set up symlinks (automatically created for you)'));
+          console.log(chalk.cyan('  2. Use AI prompts to populate rules.yaml (see README.md)'));
+          console.log(chalk.cyan('  3. Use AI prompts to initialize your memory bank files (see README.md)'));
+        } else {
+          // Add to current directory
+          const spinner = ora('Adding AI Project Starter scaffolding to current directory').start();
+          await addToProject(options);
+          spinner.succeed('AI Project Starter scaffolding added successfully!');
+          
+          console.log(chalk.cyan('\n✨ Installation complete!'));
+          console.log(chalk.cyan('📖 Next steps:'));
+          console.log(chalk.cyan('  1. Set up symlinks (automatically created for you)'));
+          console.log(chalk.cyan('  2. Use AI prompts to populate rules.yaml (see README.md)'));
+          console.log(chalk.cyan('  3. Use AI prompts to initialize your memory bank files (see README.md)'));
+        }
+      }
+    } catch (error) {
+      if (ora.isSpinning) {
+        ora().fail(error.message);
+      } else {
+        console.error(chalk.red(`Error: ${error.message}`));
       }
       
-      console.log(chalk.green('\n✨ Installation complete!'));
-      console.log('📖 Next steps:');
-      console.log('  1. Set up symlinks (automatically created for you)');
-      console.log('  2. Use AI prompts to populate rules.yaml (see README.md)');
-      console.log('  3. Use AI prompts to initialize your memory bank files (see README.md)');
-      
-    } catch (error) {
-      console.error(chalk.red('Error during installation:'), error.message);
-      if (options.verbose) {
+      if (process.env.VERBOSE) {
         console.error(error);
       }
+      
       process.exit(1);
     }
   });
 
-program.parse();
+program.parse(process.argv);

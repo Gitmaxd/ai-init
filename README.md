@@ -4,19 +4,19 @@
 [![License](https://img.shields.io/npm/l/ai-init.svg)](https://github.com/Gitmaxd/ai-init/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/npm/dt/ai-init.svg)](https://www.npmjs.com/package/ai-init)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Gitmaxd/ai-init)](https://github.com/Gitmaxd/ai-init)
-[![Version 1.4.0](https://img.shields.io/badge/version-1.4.0-blue)](https://www.npmjs.com/package/ai-init)
+[![Version 1.5.0](https://img.shields.io/badge/version-1.5.0-blue)](https://www.npmjs.com/package/ai-init)
 
-A lightweight, one-time scaffolding tool for bootstrapping AI-assisted development projects with structured rules and memory management.
+A lightweight scaffolding tool for adding AI-assisted development structure to Next.js projects.
 
 ## 🤔 What is AI Init?
 
 AI Init helps you quickly set up the foundation for AI-assisted development by creating a standardized structure of files and directories. This structure helps AI tools like GitHub Copilot, Cursor, and WindSurf better understand your project context and maintain knowledge across sessions.
 
-Originally designed with Next.js projects in mind, AI Init works well with various JavaScript/TypeScript project types but offers the most comprehensive support for Next.js applications.
+Designed specifically for Next.js projects, AI Init creates the necessary directory structure and files that enable AI assistants to better understand and help with your development.
 
 ## 🔄 How It Works
 
-AI Init is a one-time scaffolding tool - it sets up the structure and then gets out of your way. There's no ongoing dependency or library to maintain. The created files provide context to AI assistants, helping them:
+AI Init is a one-time scaffolding tool - it sets up the structure and gets out of your way. There's no ongoing dependency or library to maintain. The created files provide context to AI assistants, helping them:
 
 - Understand your project's goals and requirements
 - Follow your coding standards and patterns
@@ -29,7 +29,7 @@ AI Init is a one-time scaffolding tool - it sets up the structure and then gets 
 - **AI Memory Bank**: Persistent knowledge storage for AI assistants across sessions
 - **Architecture Decision Records**: Track and document important technical decisions
 - **Automated Scaffolding**: One-command setup of the required project structure
-- **Git-Friendly**: Includes standard gitignore and supports conventional commit formats
+- **Lightweight**: No dependencies added to your project, just structure
 
 ## 🚀 Installation & Usage
 
@@ -38,10 +38,10 @@ AI Init is a one-time scaffolding tool - it sets up the structure and then gets 
 The easiest way to use AI Init is with npx, which comes with npm 5.2+ and higher:
 
 ```bash
-# Create a new project (will create a new directory)
-npx ai-init my-project
+# Create a new directory with AI scaffolding
+npx ai-init my-directory
 
-# Add to an existing project (run in the project directory)
+# Add scaffolding to an existing project (run in the project directory)
 npx ai-init --add
 ```
 
@@ -54,31 +54,27 @@ If you prefer, you can install AI Init globally:
 npm install -g ai-init
 
 # Then use without npx
-ai-init my-project
+ai-init my-directory
 ```
 
 ### Package Version
 
-The current version is **1.4.0**. You can specify a version with npx if needed:
+The current version is **1.5.0**. You can specify a version with npx if needed:
 
 ```bash
-npx ai-init@1.4.0 my-project
+npx ai-init@1.5.0 my-directory
 ```
 
 ### Command Options
 
 ```bash
-npx ai-init my-project [options]
+npx ai-init [directory-name] [options]
 ```
 
 Options:
-- `--type <type>` - Project type (`default`, `next` (recommended), `react`, `node`)
-- `--skip-git` - Skip git initialization
-- `--skip-install` - Skip dependency installation
+- `--add` - Add scaffolding to existing project
 - `--verbose` - Show detailed logs
-- `--add` - Add scaffolding to an existing project
-
-> **Note:** The `next` project type is recommended as AI Init was primarily designed for Next.js projects and offers the most comprehensive support for this framework.
+- `--skip-symlink` - Skip creating symlinks
 
 ### Interactive Mode
 
@@ -321,9 +317,9 @@ If you encounter issues during installation or setup:
 
 1. **Symlink Creation**: Some environments may require administrative privileges to create symlinks. Try running with elevated permissions if symlinks aren't created.
 
-2. **Dependency Installation**: Use the `--verbose` flag to see detailed logs for debugging dependency installation issues.
+2. **Missing Files**: Use the `--verbose` flag to see detailed logs for debugging file copying issues.
 
-3. **Template Availability**: If you receive a message about a template not being found, the system will automatically fall back to the Next.js template.
+3. **Windows Users**: On Windows, symlinks will be replaced with file copies due to permission restrictions.
 
 ## 👥 Contributing
 
