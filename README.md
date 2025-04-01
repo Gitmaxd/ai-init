@@ -108,6 +108,7 @@ project-root/
 ├── mem-scripts/              # Helper scripts
 ├── .windsurfrules            # Symlink to rules.yaml for WindSurf IDE
 ├── .cursorrules              # Symlink to rules.yaml for Cursor IDE
+├── .clinerules               # Symlink to rules.yaml for command-line tools
 └── rules.yaml                # Main configuration file
 ```
 
@@ -117,7 +118,7 @@ After installing AI Init, you'll need to set up your project's rules and memory 
 
 ### 🔗 Step 1: Verify Symlinks
 
-AI Init automatically creates symlinks from `rules.yaml` to `.windsurfrules` and `.cursorrules` in your project root. These ensure that AI assistants can detect and apply your project rules.
+AI Init automatically creates symlinks from `rules.yaml` to `.windsurfrules`, `.cursorrules`, and `.clinerules` in your project root. These ensure that AI assistants and command-line tools can detect and apply your project rules.
 
 ### 🔄 Step 2: Populate the Rules File
 
