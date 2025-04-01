@@ -5,13 +5,13 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/Gitmaxd/ai-init)](https://github.com/Gitmaxd/ai-init)
 [![Version 1.6.4](https://img.shields.io/badge/version-1.6.4-blue)](https://www.npmjs.com/package/ai-init)
 
-A **zero-dependency** lightweight scaffolding tool for adding AI-assisted development structure to Next.js projects.
+A **zero-dependency** lightweight scaffolding tool for adding AI-assisted development structure to Next.js projects (Python support coming soon).
 
 ## 🤔 What is AI Init?
 
 AI Init helps you quickly set up the foundation for AI-assisted development by creating a standardized structure of files and directories. This structure helps AI tools like GitHub Copilot, Cursor, and WindSurf better understand your project context and maintain knowledge across sessions.
 
-Designed specifically for Next.js projects, AI Init creates the necessary directory structure and files that enable AI assistants to better understand and help with your development.
+Designed specifically for Next.js projects (with Python support in development), AI Init creates the necessary directory structure and files that enable AI assistants to better understand and help with your development.
 
 ## 💭 Why I Created AI Init
 
