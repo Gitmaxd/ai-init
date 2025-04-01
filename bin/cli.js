@@ -104,9 +104,9 @@ program
       
       console.log(chalk.green('\n✨ Installation complete!'));
       console.log('📖 Next steps:');
-      console.log('  1. Review the AI-PROJECT-STARTER-README.md file');
-      console.log('  2. Update placeholder values in rules.yaml');
-      console.log('  3. Initialize your memory bank files with project information');
+      console.log('  1. Set up symlinks (automatically created for you)');
+      console.log('  2. Use AI prompts to populate rules.yaml (see README.md)');
+      console.log('  3. Use AI prompts to initialize your memory bank files (see README.md)');
       
     } catch (error) {
       console.error(chalk.red('Error during installation:'), error.message);
