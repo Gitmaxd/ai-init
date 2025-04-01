@@ -28,12 +28,20 @@ node_modules/
 
 # Editor specific files
 *.sublime-*
-*.swp
-*.swo
 
-# OS generated files
+# Temp files
+*.tmp
+*.temp
+*.bak
+*~
+
+# OS specific files
 .DS_Store
 Thumbs.db
+.AppleDouble
+.LSOverride
+Icon
+._*
 
 # Documentation files not needed in the package
 CONTRIBUTING.md

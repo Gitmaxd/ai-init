@@ -19,9 +19,20 @@ build/
 .idea/
 *.sublime-*
 
-# OS files
+# OS specific files
 .DS_Store
 Thumbs.db
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
 
 # Logs
 logs
