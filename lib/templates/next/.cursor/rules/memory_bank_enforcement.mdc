@@ -1,0 +1,31 @@
+<rule>
+name: memory_bank_enforcement
+description: Ensure required memory-bank files exist in correct location
+filters:
+  - type: event
+    pattern: "file_create"
+  - type: path
+    pattern: "^memory-bank/.*\.md$"
+actions:
+  - type: reject
+    conditions:
+      - pattern: "^(?!memory-bank/(projectbrief|techContext|systemPatterns|activeContext|progress)\.md$)"
+        message: "Memory Bank files must be one of the approved names and placed in memory-bank/"
+  - type: suggest
+    message: |
+      Missing standard memory-bank files? You can create:
+
+      - memory-bank/projectbrief.md
+      - memory-bank/techContext.md
+      - memory-bank/systemPatterns.md
+      - memory-bank/activeContext.md
+      - memory-bank/progress.md
+
+      Use them to provide long-term project memory and context.
+examples:
+  - input: "memory-bank/projectbrief.md"
+    output: "Valid memory-bank file"
+metadata:
+  priority: high
+  version: 1.0
+</rule>

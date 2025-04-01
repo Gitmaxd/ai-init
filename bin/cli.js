@@ -76,7 +76,8 @@ program
             type: 'list',
             name: 'projectType',
             message: 'What type of project are you creating?',
-            choices: ['next', 'react', 'node', 'other']
+            choices: ['next', 'react', 'node', 'other'],
+            default: 'next'
           },
           {
             type: 'confirm',

@@ -9,6 +9,8 @@ A lightweight, one-time scaffolding tool for bootstrapping AI-assisted developme
 
 AI Init helps you quickly set up the foundation for AI-assisted development by creating a standardized structure of files and directories. This structure helps AI tools like GitHub Copilot, Cursor, and WindSurf better understand your project context and maintain knowledge across sessions.
 
+Originally designed with Next.js projects in mind, AI Init works well with various JavaScript/TypeScript project types but offers the most comprehensive support for Next.js applications.
+
 ## 🔄 How It Works
 
 AI Init is a one-time scaffolding tool - it sets up the structure and then gets out of your way. There's no ongoing dependency or library to maintain. The created files provide context to AI assistants, helping them:
@@ -48,11 +50,13 @@ npx ai-init my-project [options]
 ```
 
 Options:
-- `--type <type>` - Project type (`default`, `next`, `react`, `node`)
+- `--type <type>` - Project type (`default`, `next` (recommended), `react`, `node`)
 - `--skip-git` - Skip git initialization
 - `--skip-install` - Skip dependency installation
 - `--verbose` - Show detailed logs
 - `--add` - Add scaffolding to an existing project
+
+> **Note:** The `next` project type is recommended as AI Init was primarily designed for Next.js projects and offers the most comprehensive support for this framework.
 
 ### Interactive Mode
 

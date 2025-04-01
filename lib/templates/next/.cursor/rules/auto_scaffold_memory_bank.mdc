@@ -1,0 +1,26 @@
+<rule>
+name: auto_scaffold_memory_bank
+description: Offer to scaffold memory-bank folder and template files at project init
+filters:
+  - type: event
+    pattern: "project_init"
+actions:
+  - type: suggest
+    message: |
+      Would you like to scaffold the memory-bank directory?
+
+      I will create:
+      - memory-bank/projectbrief.md
+      - memory-bank/techContext.md
+      - memory-bank/systemPatterns.md
+      - memory-bank/activeContext.md
+      - memory-bank/progress.md
+
+      These provide persistent memory and AI-readable context.
+examples:
+  - input: "Starting a new AI project"
+    output: "Prompt to scaffold memory-bank structure"
+metadata:
+  priority: low
+  version: 1.0
+</rule>

@@ -1,0 +1,35 @@
+<rule>
+name: naming_conventions
+description: Enforce proper naming conventions based on file type and purpose
+filters:
+  - type: file_extension
+    pattern: "\.(js|ts|tsx|md)$"
+actions:
+  - type: suggest
+    message: |
+      File naming conventions for this project:
+      
+      1. React Component Files (.tsx):
+         - Use PascalCase (e.g., Button.tsx, UserProfile.tsx)
+      
+      2. Pages and Routes:
+         - Use kebab-case for page files (e.g., about-us.tsx)
+         - Use snake_case for dynamic route segments (e.g., [product_id].tsx)
+         - Use lowercase for special files (page.tsx, layout.tsx, loading.tsx)
+      
+      3. Utility & Config Files (.js, .ts):
+         - Use kebab-case (e.g., api-helpers.ts, date-utils.ts)
+      
+      4. Documentation files (.md):
+         - Use kebab-case (e.g., getting-started.md)
+examples:
+  - input: "src/components/Button.tsx"
+    output: "Valid: PascalCase for component files"
+  - input: "src/utils/date-helpers.ts"
+    output: "Valid: kebab-case for utility files"
+  - input: "src/app/about-us/page.tsx"
+    output: "Valid: kebab-case for routes, lowercase for special files"
+metadata:
+  priority: medium
+  version: 1.1
+</rule>
