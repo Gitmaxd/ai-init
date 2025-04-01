@@ -83,7 +83,7 @@ program
             type: 'input',
             name: 'projectName',
             message: 'Name of directory to create (leave empty to add to current directory):',
-            validate: (input) => true
+            validate: (_input) => true
           }
         ]);
         
