@@ -74,3 +74,4 @@ echo "   npm publish"
 echo
 echo "3. Push the release tag:"
 echo "   git push && git push --tags"
+
