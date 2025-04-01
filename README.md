@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/ai-init.svg)](https://www.npmjs.com/package/ai-init)
 [![License](https://img.shields.io/npm/l/ai-init.svg)](https://github.com/Gitmaxd/ai-init/blob/main/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Gitmaxd/ai-init)](https://github.com/Gitmaxd/ai-init)
-[![Version 1.6.4](https://img.shields.io/badge/version-1.6.4-blue)](https://www.npmjs.com/package/ai-init)
+[![Version 1.6.5](https://img.shields.io/badge/version-1.6.5-blue)](https://www.npmjs.com/package/ai-init)
 
 A **zero-dependency** lightweight scaffolding tool for adding AI-assisted development structure to Next.js projects (Python support coming soon).
 
@@ -71,14 +71,14 @@ ai-init my-directory
 
 ### Package Version
 
-The current version is **1.6.4**. You can use AI Init with either the latest or a specific version:
+The current version is **1.6.5**. You can use AI Init with either the latest or a specific version:
 
 ```bash
 # Always use the most recent version from npm
 npx ai-init@latest my-directory
 
 # Use a specific version for consistency or compatibility
-npx ai-init@1.6.4 my-directory
+npx ai-init@1.6.5 my-directory
 ```
 
 ### Command Options
