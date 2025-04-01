@@ -4,9 +4,9 @@
 [![License](https://img.shields.io/npm/l/ai-init.svg)](https://github.com/Gitmaxd/ai-init/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/npm/dt/ai-init.svg)](https://www.npmjs.com/package/ai-init)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Gitmaxd/ai-init)](https://github.com/Gitmaxd/ai-init)
-[![Version 1.5.0](https://img.shields.io/badge/version-1.5.0-blue)](https://www.npmjs.com/package/ai-init)
+[![Version 1.6.0](https://img.shields.io/badge/version-1.6.0-blue)](https://www.npmjs.com/package/ai-init)
 
-A lightweight scaffolding tool for adding AI-assisted development structure to Next.js projects.
+A **zero-dependency** lightweight scaffolding tool for adding AI-assisted development structure to Next.js projects.
 
 ## 🤔 What is AI Init?
 
@@ -25,6 +25,7 @@ AI Init is a one-time scaffolding tool - it sets up the structure and gets out o
 
 ## 🌟 Features
 
+- **Zero Dependencies**: Built with native Node.js modules only
 - **Standardized Project Rules**: Define coding standards and best practices in a structured format
 - **AI Memory Bank**: Persistent knowledge storage for AI assistants across sessions
 - **Architecture Decision Records**: Track and document important technical decisions
@@ -59,10 +60,10 @@ ai-init my-directory
 
 ### Package Version
 
-The current version is **1.5.0**. You can specify a version with npx if needed:
+The current version is **1.6.0**. You can specify a version with npx if needed:
 
 ```bash
-npx ai-init@1.5.0 my-directory
+npx ai-init@1.6.0 my-directory
 ```
 
 ### Command Options
@@ -75,6 +76,8 @@ Options:
 - `--add` - Add scaffolding to existing project
 - `--verbose` - Show detailed logs
 - `--skip-symlink` - Skip creating symlinks
+- `--help` or `-h` - Show help message
+- `--version` or `-v` - Show version number
 
 ### Interactive Mode
 
