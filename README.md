@@ -74,6 +74,7 @@ ai-init my-directory
 The current version is **1.6.4**. You can specify a version with npx if needed:
 
 ```bash
+npx ai-init@latest my-directory
 npx ai-init@1.6.4 my-directory
 ```
 
