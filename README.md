@@ -172,6 +172,8 @@ You are tasked with the following responsibilities:
 - Think in terms of **dense technical documentation**: descriptive but not overly verbose.
 - Ensure every populated section in the `@rules.yaml` reflects the **real capabilities and structure** of the application.
 - When uncertain, make educated inferences based on patterns in the codebase—but flag assumptions as such.
+
+- Fill all placeholders or remove the placeholder if it is not relevant.
 ```
 
 ### 📝 Step 3: Initialize Memory Bank Files

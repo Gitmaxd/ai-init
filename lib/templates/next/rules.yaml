@@ -1,12 +1,19 @@
-# This file defines project standards, conventions, and rules for AI assistants
-# It should be placed at the root of your project as .windsurfrules
+# -----------------------------------------------------------------------------------
+# This file defines project standards, conventions, and rules for AI assistants.
+# It should be placed at the root of your project as .cursorrules, .windsurfrules,
+# or .clinerules. Leave all three symlinks in place for maximum compatibility.
+#
+# NOTE: The placeholders below (e.g., {{NEXTJS_VERSION}}, {{STYLING_APPROACH}})
+# are designed for an LLM to fill in once it has analyzed the project codebase.
+# They should not be assumed or hardcoded without confirmation from the source code.
+# -----------------------------------------------------------------------------------
 
 metadata:
   version: "1.0.0"
   created_at: "2025-03-31"
   updated_at: "2025-03-31"
   template_type: "project_rules"
-  intended_use: "AI IDE project configuration"
+  intended_use: "AI IDE project initialization"
   author: "GitMaxd"
   package_url: "https://www.npmjs.com/package/ai-init"
 
@@ -28,25 +35,29 @@ schema:
     - examples
     - template_completion
 
-description: Next.js Project Configuration and Enforcement Rules
+description: "Next.js Project Configuration and Enforcement Rules (Placeholders for version/technologies)"
 
-# Project information - replace placeholders with actual values
+# ---------------------------------------------------------------------
+# PROJECT INFORMATION - placeholders are used to be filled by the LLM
+# ---------------------------------------------------------------------
 project:
   name: "{{PROJECT_NAME}}"
-  type: "Next.js application"
+  type: "{{PROJECT_TYPE}}"  # e.g., "Next.js application" or "Node.js microservice"
   goal: "{{PROJECT_GOAL}}"
   technologies:
-    - "Next.js"
+    - "Next.js {{NEXTJS_VERSION}}"  # e.g., Next.js 13, or Next.js 12
     - "React"
     - "TypeScript"
-    - "{{ADDITIONAL_TECHNOLOGY_1}}"
+    - "{{ADDITIONAL_TECHNOLOGY_1}}"  # e.g., Tailwind, Redux
     - "{{ADDITIONAL_TECHNOLOGY_2}}"
   features:
     - "{{FEATURE_1}}"
     - "{{FEATURE_2}}"
     - "{{FEATURE_3}}"
 
-# Documentation structure and requirements
+# ---------------------------------------------------------------------
+# DOCUMENTATION STRUCTURE AND REQUIREMENTS
+# ---------------------------------------------------------------------
 documentation:
   locations:
     - path: doc-files/
@@ -54,50 +65,56 @@ documentation:
     - path: memory-bank/
       purpose: Structured project knowledge
   memory_bank_required_files:
-    - projectbrief.md  # High-level project goals and requirements
-    - techContext.md   # Technical stack and architectural decisions
-    - systemPatterns.md # Common patterns and conventions
-    - activeContext.md # Current work in progress
-    - progress.md      # Project status and milestone tracking
+    - projectbrief.md     # High-level project goals and requirements
+    - techContext.md      # Technical stack and architectural decisions
+    - systemPatterns.md   # Common patterns and conventions
+    - activeContext.md    # Current work in progress
+    - progress.md         # Project status and milestone tracking
 
-# Code style and conventions
+# ---------------------------------------------------------------------
+# CODE STYLE AND CONVENTIONS
+# ---------------------------------------------------------------------
 conventions:
   general:
     - Clear, descriptive variable and function names
     - Comment complex logic
     - Single responsibility functions
-    - Limit line length to 80 characters
+    - Limit line length to 80 characters  # Placeholder—may be adjusted after LLM analysis
   javascript_typescript:
     naming:
-      variables: 
+      variables:
         pattern: "^[a-z][a-zA-Z0-9]*$"
         style: camelCase
         examples: ["userId", "apiResponse"]
-      classes: 
+      classes:
         pattern: "^[A-Z][a-zA-Z0-9]*$"
         style: PascalCase
         examples: ["UserProfile", "ApiClient"]
       files:
-        component: 
-          pattern: "^[A-Z][a-zA-Z0-9]*\.(tsx|jsx)$"
+        component:
+          pattern: "^[A-Z][a-zA-Z0-9]*\\.(tsx|jsx)$"
           style: PascalCase
           examples: ["Button.tsx", "UserProfile.tsx"]
         utility:
-          pattern: "^[a-z][a-z0-9-]*\.(ts|js)$"
+          pattern: "^[a-z][a-z0-9-]*\\.(ts|js)$"
           style: kebab-case
           examples: ["api-helpers.ts", "date-utils.ts"]
         page:
+          # For Next.js: The actual pattern depends on whether we're using the App Router or Pages Router.
+          # The LLM will confirm the correct pattern by analyzing the codebase.
           pattern: "^([a-z][a-z0-9-]*|\\[\\w+\\]|layout|page|loading|error)\\.tsx$"
-          style: "kebab-case for routes, snake_case for dynamic segments, lowercase for special files"
+          style: "kebab-case for routes, snake_case for dynamic segments, etc."
           examples: ["about-us.tsx", "[product_id].tsx", "page.tsx"]
     practices:
       - Prefer const over let
       - Avoid var
       - Use async/await instead of promise chains
-      - Use server components by default, client components when necessary
-      - Prefer server actions for data mutations
+      - "{{SERVER_COMPONENT_GUIDELINE}}"  # e.g., "If using Next.js >=13 with App Router, prefer server components"
+      - "{{CLIENT_COMPONENT_GUIDELINE}}"  # e.g., "Use client components if you need browser APIs or user interaction"
+      - "{{DATA_FETCHING_GUIDELINE}}"     # e.g., "Prefer server actions for data mutations if supported"
   css_scss:
-    naming: 
+    naming:
+      # This is a placeholder approach; if Tailwind or another CSS framework is in use, the LLM should update accordingly.
       style: BEM
       examples: [".block__element--modifier", ".card__title--highlighted"]
     sort_properties: true
@@ -105,58 +122,76 @@ conventions:
       - colors
       - spacing
 
-# Testing requirements
+# ---------------------------------------------------------------------
+# TESTING REQUIREMENTS
+# ---------------------------------------------------------------------
 testing:
   required:
     - Unit tests for utilities and services
     - Component tests for UI elements
     - Integration tests for critical user flows
-  location: Colocated with code, .test.ts suffix
+  location: "Colocated with code, .test.ts suffix"
   tools:
     - Jest
     - React Testing Library
-    - Playwright for E2E tests
+    - Playwright  # or Cypress, or any other E2E framework
   coverage:
-    minimum: "{{MINIMUM_TEST_COVERAGE}}"
+    minimum: "{{MINIMUM_TEST_COVERAGE}}"  # e.g., 80%
 
-# Security guidelines
+# ---------------------------------------------------------------------
+# SECURITY GUIDELINES
+# ---------------------------------------------------------------------
 security:
   restricted_files:
     - .env
     - .env.*
     - credentials.json
-    - "{{ADDITIONAL_SENSITIVE_FILES}}"
+    - "{{ADDITIONAL_SENSITIVE_FILES}}"  # e.g., "firebaseAdminKey.json"
   practices:
     - Never hardcode API keys or credentials
     - Use environment variables for sensitive configuration
     - Sanitize user inputs to prevent injection attacks
     - Follow OWASP security guidelines for web applications
-    - Use Next.js middleware for authentication and authorization
+    - If using Next.js middleware for auth, specify approach in memory-bank docs
 
-# Architecture information
+# ---------------------------------------------------------------------
+# ARCHITECTURE INFORMATION
+# ---------------------------------------------------------------------
 architecture:
-  pattern: "App Router with Server Components"
-  state_management: "Server Components + React Context for client state"
-  api_communication: "Server Actions + Route Handlers"
-  routing:
-    - Use App Router's convention-based routing
-    - Group related routes with route groups
-    - Use layout components for shared UI
-  directory_structure:
-    - app/              # Next.js App Router pages
-    - components/       # Shared UI components
-    - lib/              # Core utilities and services
-    - public/           # Static assets
+  pattern: "{{ARCHITECTURAL_PATTERN}}"  
+  # e.g., "Next.js App Router", "Next.js Pages Router", "Hybrid SSG/SSR approach"
+  
+  state_management: "{{STATE_MANAGEMENT}}" 
+  # e.g., "Server Components + React Context", "Redux", "React Query", etc.
 
-# Development workflow
+  api_communication: "{{API_COMMUNICATION}}"  
+  # e.g., "Server Actions", "getServerSideProps", "API Routes"
+
+  routing:
+    - "If using App Router (Next.js >=13), place route handlers in app/"
+    - "If using Pages Router (Next.js <=12), use pages/ and the standard file-based approach"
+  directory_structure:
+    - app/ or pages/   # LLM will confirm which one is used in the codebase
+    - components/      # Shared UI components
+    - lib/             # Core utilities and services
+    - public/          # Static assets
+
+# ---------------------------------------------------------------------
+# DEVELOPMENT WORKFLOW
+# ---------------------------------------------------------------------
 workflow:
   process:
     - Create branch per feature/fix
     - Write tests before implementation when possible
     - Run linters and tests before committing
     - Follow conventional commits format
+  ci_cd:
+    - "{{CI_CD_TOOL}}"  # e.g., GitHub Actions, GitLab CI, Jenkins, etc.
+    - "Automate lint/test checks before merge"
 
-# Maintenance procedures
+# ---------------------------------------------------------------------
+# MAINTENANCE PROCEDURES
+# ---------------------------------------------------------------------
 maintenance:
   update_files:
     - activeContext.md  # Update with current state
@@ -164,8 +199,12 @@ maintenance:
     - systemPatterns.md # Update if new patterns emerge
     - techContext.md    # Update if new technologies are introduced
     - projectbrief.md   # Update if project goals change
+  dependency_updates:
+    - "Use {{DEPENDENCY_UPDATE_TOOL}} to keep dependencies current (e.g., npm audit, Yarn, Dependabot)."
 
-# Git commit message format
+# ---------------------------------------------------------------------
+# GIT COMMIT MESSAGE FORMAT
+# ---------------------------------------------------------------------
 commit_format:
   pattern: "<type>[optional scope]: <description>\n\n[optional body]\n\n[optional footer]"
   types:
@@ -188,17 +227,19 @@ commit_format:
     - "feat(auth): implement SSO functionality"
     - "fix(api): prevent timeout on large requests\n\nIncreased request timeout and implemented streaming response.\nFixes #422"
 
-# Rules for enforcing project standards
+# ---------------------------------------------------------------------
+# RULES FOR ENFORCING PROJECT STANDARDS
+# ---------------------------------------------------------------------
 rules:
   - name: architecture_alignment
-    description: Ensure new features follow Next.js App Router conventions
+    description: "Ensure new features follow the chosen Next.js conventions (App Router or Pages Router)."
     filters:
       - type: file_extension
         pattern: "\\.(ts|tsx|js|jsx)$"
     actions:
       - type: suggest
-        message: "Check ADRs in doc-files/adr/ for guidance on architectural decisions. Follow Next.js App Router conventions for routing and data fetching."
-        
+        message: "Check doc-files/ or memory-bank for guidance on architectural decisions."
+
   - id: "rule-001"
     name: "memory_bank_enforcement"
     description: "Memory bank files must exist and follow naming/location conventions"
@@ -214,23 +255,27 @@ rules:
 
   - id: "rule-002"
     name: "nextjs_best_practices"
-    description: "Enforce Next.js best practices"
+    description: "Placeholder for Next.js best practices. LLM will confirm version-specific rules."
     severity: "warning"
-    applies_to: "app/"
+    applies_to: "app/ or pages/"
     validation:
       file_patterns:
         - pattern: "^page\\.tsx$"
-          message: "Page components should be the default export in page.tsx files"
+          message: "If using Pages Router, page components should be the default export in page.tsx. If using App Router, confirm the relevant naming convention."
         - pattern: "^layout\\.tsx$"
-          message: "Layout components should be the default export in layout.tsx files"
-        - pattern: "^loading\\.tsx$" 
-          message: "Loading components should be the default export in loading.tsx files"
+          message: "If using App Router, layout components should be the default export in layout.tsx."
+        - pattern: "^loading\\.tsx$"
+          message: "If using App Router, loading components should be the default export in loading.tsx."
 
-# Instructions for LLMs on how to interpret and apply these rules
+# ---------------------------------------------------------------------
+# INSTRUCTIONS FOR LLMs ON HOW TO INTERPRET AND APPLY THESE RULES
+# ---------------------------------------------------------------------
 llm_instructions:
-  - "Use these rules to guide code generation and recommendations for a Next.js project"
-  - "Enforce naming conventions defined in this file"
-  - "Suggest corrections when code doesn't follow these standards"
-  - "Default to server components unless client interactivity is needed"
-  - "Prefer Server Actions for data mutations over client-side API calls"
-  - "Follow the App Router directory structure conventions"
+  - "Use these rules to guide code generation and recommendations for a Next.js project."
+  - "Fill placeholders like {{NEXTJS_VERSION}} or {{ARCHITECTURAL_PATTERN}} by analyzing the actual codebase."
+  - "Do NOT assume a Next.js version unless confirmed by the code (App Router vs. Pages Router)."
+  - "Follow naming conventions defined here or in code-level config if conflicts arise."
+  - "Suggest corrections when code doesn't follow these standards."
+  - "If the project uses Next.js ≥13 with App Router, default to server components when possible."
+  - "If the project uses Next.js ≤12 with the Pages Router, use the standard getStaticProps/getServerSideProps/data fetching approach."
+  - "Apply coverage thresholds, lint checks, and memory-bank validations as described."

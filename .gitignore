@@ -51,3 +51,6 @@ coverage/
 
 # WIP files
 lib/templates/next/mem-scripts/python-install.sh-wip
+
+# Backup files
+**/*rules copy.back
