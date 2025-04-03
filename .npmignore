@@ -55,3 +55,5 @@ examples/
 
 # Backup files
 **/*rules copy.back
+**/rules\ copy.back
+lib/templates/next/rules\ copy.back
