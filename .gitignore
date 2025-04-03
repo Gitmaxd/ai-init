@@ -48,3 +48,6 @@ coverage/
 # Temporary directories
 .tmp/
 .temp/
+
+# WIP files
+lib/templates/next/mem-scripts/python-install.sh-wip

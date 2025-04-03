@@ -1,11 +1,18 @@
 # AI Init
 
+> **🚧 Work in Progress - Production Ready for Next.js**  
+> While this project is actively evolving, it's already proven valuable for AI-assisted development. The installer is safe and non-destructive - it never modifies existing files or adds dependencies. It simply creates helpful scaffolding files that make AI tools smarter.
+
 [![npm version](https://img.shields.io/npm/v/ai-init.svg)](https://www.npmjs.com/package/ai-init)
 [![License](https://img.shields.io/npm/l/ai-init.svg)](https://github.com/Gitmaxd/ai-init/blob/main/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Gitmaxd/ai-init)](https://github.com/Gitmaxd/ai-init)
 [![Version 1.6.7](https://img.shields.io/badge/version-1.6.7-blue)](https://www.npmjs.com/package/ai-init)
 
 A **zero-dependency** lightweight scaffolding tool for adding AI-assisted development structure to Next.js projects (Python support coming soon).
+
+> **🔥 Pro Tip**: Try it first on a sample project like `npx create-next-app@latest` with the `--add` flag to see how it works. The tool will:
+> 1. Create a `rules.yaml` file (symlinked as `.windsurfrules`, `.cursorrules`, and `.clinerules`)
+> 2. Set up a `memory-bank` directory with default files based on your rules
 
 ## 🤔 What is AI Init?
 
@@ -325,10 +332,9 @@ The project enforces a standardized commit message format:
 
 For the best experience, use with:
 
-- [WindSurf](https://windsurf.sail.dev) - The world's first agentic IDE
-- [Cursor](https://cursor.sh) - AI-native code editor
-- [Cline](https://cline.dev) - AI-powered command-line interface
-- GitHub Copilot compatible editors (VS Code, JetBrains IDEs)
+- [WindSurf](https://codeium.com/windsurf) - The world's first agentic IDE
+- [Cursor](https://cursor.com) - AI-native code editor
+- [Cline](https://cline.bot) - AI-powered command-line interface
 
 ## 🔍 Troubleshooting
 
@@ -367,9 +373,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
     </a>
   </p>
   <p>
-    <b>Created by <a href="https://github.com/Gitmaxd">GitMaxd</a></b>
+    <b>Created by <a href="https://x.com/Gitmaxd">GitMaxd</a></b>
   </p>
   <p>
-    <small>&copy; {{ site.time | date: '%Y' }} GitMaxd. Open Source (Free like beer) and Experimental (not medicinal).</small>
+    <small>MIT Licensed | 2025 <a href="https://x.com/GitMaxd">GitMaxd</a></small>
   </p>
 </div>

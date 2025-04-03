@@ -48,3 +48,6 @@ CONTRIBUTING.md
 CHANGELOG.md
 docs/
 examples/
+
+# WIP files
+lib/templates/next/mem-scripts/python-install.sh-wip
