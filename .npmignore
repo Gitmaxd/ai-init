@@ -52,3 +52,6 @@ CONTRIBUTING.md
 CHANGELOG.md
 docs/
 examples/
+
+# Backup files
+**/*rules copy.back
