@@ -1,6 +1,6 @@
 {
   "name": "ai-init",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "description": "Zero-dependency Next.js scaffolding tool for AI-assisted development",
   "main": "lib/index.js",
   "bin": {
