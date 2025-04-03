@@ -34,6 +34,10 @@ node_modules/
 *.temp
 *.bak
 *~
+lint-report.md
+lint-report-*.md
+*-wip
+*-WIP
 
 # OS specific files
 .DS_Store
@@ -48,6 +52,3 @@ CONTRIBUTING.md
 CHANGELOG.md
 docs/
 examples/
-
-# WIP files
-lib/templates/next/mem-scripts/python-install.sh-wip
